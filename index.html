@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Craften Studio | Portfolio</title>
+  <meta name="description" content="Craften Studio — indie game developers crafting immersive, fun, and visually striking games." />
+  <link rel="icon" href="logo.png" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="glass sticky">
+    <nav class="container nav">
+      <a href="#home" class="brand" aria-label="Craften Studio Home">
+        <img src="logo.png" alt="Craften Studio Logo" class="logo-img" />
+        <span class="logo-text">Craften <b>Studio</b></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#licenses">Licenses</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <canvas id="bg-grid" aria-hidden="true"></canvas>
+    <div class="container hero-inner">
+      <h1 class="headline">Welcome to <span>Craften Studio</span></h1>
+      <p class="subhead">We craft unique, engaging gaming experiences with stunning visuals, satisfying mechanics, and unforgettable fun.</p>
+      <div class="cta-row">
+        <a href="#about" class="btn primary">Explore More</a>
+        <a href="#contact" class="btn ghost">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section container">
+    <h2>About Us</h2>
+    <p class="muted">
+      Craften Studio is an independent game studio focused on premium feel and player-first design. From fast arcade
+      loops to cozy adventures, we polish every detail—controls, juice, and juicy VFX—to keep players in flow.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Art & Aesthetics</h3>
+        <p>Low‑poly charm with hand‑painted vibes, crispy UI, and neon accents tailored for both mobile and PC.</p>
+      </div>
+      <div class="card">
+        <h3>Gameplay First</h3>
+        <p>Snappy controls, satisfying feedback, and depth that rewards mastery without sacrificing accessibility.</p>
+      </div>
+      <div class="card">
+        <h3>Tech & Tools</h3>
+        <p>Unity + custom shaders, smart optimization, and scalable pipelines for multiplatform delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Licenses / Privacy -->
+  <section id="licenses" class="section section-alt">
+    <div class="container">
+      <h2>Privacy & Licenses</h2>
+      <div class="license-box">
+        <h3>1) Personal Information</h3>
+        <p>We do not collect, store, or share any personally identifiable information (PII) from users of our games.</p>
+
+        <h3>2) Data Collection</h3>
+        <p>Our games are offline, single‑player experiences. We do <em>not</em> collect:</p>
+        <ul>
+          <li>Names</li>
+          <li>Email addresses</li>
+          <li>Location data</li>
+          <li>Contacts</li>
+          <li>Device identifiers</li>
+        </ul>
+
+        <h3>3) Children’s Privacy</h3>
+        <p>Our games are suitable for all ages and do not knowingly collect data from children under 13.</p>
+
+        <h3>4) Security</h3>
+        <p>Since we do not collect data, there is no risk of personal data leakage through our games.</p>
+
+        <h3>5) Contact</h3>
+        <p>If you have any questions about this privacy policy, please contact us below.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section container">
+    <h2>Contact Us</h2>
+    <p class="muted">Have questions or collaboration ideas? Reach us anytime:</p>
+    <a href="mailto:contact@craftenstudio.com" class="contact-mail" aria-label="Email Craften Studio">
+      📧 studiocraften@gmail.com
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <img src="logo.png" alt="Craften Studio" class="footer-logo" />
+        <span>© 2025 Craften Studio — All Rights Reserved</span>
+      </div>
+      <div class="footer-right">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#licenses">Licenses</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: background grid + scroll reveal presets -->
+  <script>
+    // Subtle animated grid background for hero
+    const canvas = document.getElementById('bg-grid');
+    const ctx = canvas.getContext('2d');
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    let t = 0;
+    function draw() {
+      const w = canvas.width, h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+      ctx.globalAlpha = 0.5;
+      const grid = 40;
+      for (let x = 0; x < w; x += grid) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+        ctx.strokeStyle = `rgba(0,255,153,${0.08 + 0.04*Math.sin((x+t)/80)})`;
+        ctx.stroke();
+      }
+      for (let y = 0; y < h; y += grid) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.strokeStyle = `rgba(255,0,102,${0.05 + 0.04*Math.cos((y+t)/90)})`;
+        ctx.stroke();
+      }
+      t += 1.2;
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    // ScrollReveal presets
+    const sr = ScrollReveal({ distance: '40px', duration: 900, easing: 'ease', cleanup: true });
+    sr.reveal('.headline', { origin: 'top', delay: 120 });
+    sr.reveal('.subhead', { origin: 'bottom', delay: 220 });
+    sr.reveal('.cta-row', { scale: 0.92, delay: 320 });
+    sr.reveal('.cards .card', { interval: 120, origin: 'bottom' });
+    sr.reveal('.license-box', { origin: 'bottom' });
+    sr.reveal('.contact-mail', { scale: 0.92 });
+  </script>
+</body>
+</html>

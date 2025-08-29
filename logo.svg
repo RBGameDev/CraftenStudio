@@ -1,0 +1,29 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#00FF99" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#00FF99" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00FF99" stop-opacity="0.0"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b1"/>
+      <feMerge>
+        <feMergeNode in="b1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="24" fill="#0E0F12"/>
+  <circle cx="256" cy="256" r="220" fill="url(#g)"/>
+  <!-- Stylized C -->
+  <path d="M355 176c-22-22-52-34-87-34-75 0-130 55-130 114 0 60 55 114 130 114 34 0 64-10 86-31l-29-29c-14 13-34 20-57 20-54 0-92-38-92-74s38-74 92-74c23 0 43 7 58 21l29-27z"
+        fill="#00FF99" filter="url(#glow)"/>
+  <!-- Pixel spark -->
+  <rect x="360" y="150" width="14" height="14" rx="2" fill="#FF0066" opacity="0.9"/>
+  <rect x="380" y="168" width="10" height="10" rx="2" fill="#FF0066" opacity="0.6"/>
+  <rect x="338" y="144" width="8" height="8" rx="2" fill="#FF0066" opacity="0.6"/>
+  <!-- Text -->
+  <text x="256" y="402" text-anchor="middle" font-family="Orbitron, Poppins, Arial" font-size="48" fill="#EAF7F3">
+    Craften Studio
+  </text>
+</svg>
